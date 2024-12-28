@@ -10,16 +10,16 @@ source:
   sha256: 4aee34ff36927065b30b9ff85d00108e1003d0ac78a3c90b7d4357b977dda80a
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   noarch: python
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - catkin_pkg >=0.4.14
     - colcon-cmake >=0.2.6
     - colcon-core >=0.7.0
@@ -34,6 +34,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/colcon/{{ name }}
